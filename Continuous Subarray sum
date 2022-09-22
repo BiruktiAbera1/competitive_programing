@@ -1,0 +1,15 @@
+   class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        n, s, pre = len(nums), 0, 0
+        end = set()
+
+        for i, num in enumerate(nums):
+            s += num
+            if k != 0:
+                s %= k
+
+            if s in end: return True
+            end.add(pre)
+            pre = s 
+
+        return False
