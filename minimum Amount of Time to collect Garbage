@@ -1,0 +1,14 @@
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        result = 0
+        d = collections.defaultdict(int)
+        for i,house in enumerate(garbage):
+            for g in house:
+                d[g] = i
+                result += 1
+        presum = [0]
+        for t in travel:
+            presum.append(presum[-1] + t)
+        for k,v in d.items():
+            result += presum[v]
+        return result
