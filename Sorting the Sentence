@@ -1,0 +1,9 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        
+        dic = {}
+        for i in s.split():
+            dic[i[-1]] = i[:-1]
+
+        final = [word for num, word in sorted(dic.items())]
+        return " ".join(final)
